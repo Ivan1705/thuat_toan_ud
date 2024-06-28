@@ -38,21 +38,21 @@ def kruskal(edges, num_nodes):
     
     return mst
 
-edges = [
-    (0, 1, 12),
-    (0, 2, 4),
-    (1, 2, 1),
-    (1, 3, 5),
-    (1, 4, 3),
-    (2, 4, 2),
-    (3, 4, 3),
-    (3, 5, 10),
-    (4, 5, 8)
-]
+# edges = [
+#     (0, 1, 12),
+#     (0, 2, 4),
+#     (1, 2, 1),
+#     (1, 3, 5),
+#     (1, 4, 3),
+#     (2, 4, 2),
+#     (3, 4, 3),
+#     (3, 5, 10),
+#     (4, 5, 8)
+# ]
 
-num_nodes = 6
-mst = kruskal(edges, num_nodes)
+# num_nodes = 6
+# mst = kruskal(edges, num_nodes)
 
-for edge in mst:
-    u, v, weight = edge
-    print(f"({u}, {v}) voi trong so {weight}")
+# for edge in mst:
+#     u, v, weight = edge
+#     print(f"({u}, {v}) voi trong so {weight}")

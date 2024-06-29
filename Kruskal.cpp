@@ -35,16 +35,20 @@ int n, m, totalWeight = 0;
 vector<Edge> edges;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+    // Số đỉnh và số cạnh
+    n = 4;
+    m = 4;
 
-    // Đọc số đỉnh và số cạnh
-    cin >> n >> m;
+    // Dữ liệu các cạnh
+    vector<tuple<int, int, int>> inputEdges = {
+        {1, 2, 1},
+        {2, 3, 2},
+        {3, 4, 3},
+        {4, 1, 4}
+    };
 
-    // Đọc các cạnh và lưu vào vector edges
-    for (int i = 0; i < m; ++i) {
-        int u, v, c;
-        cin >> u >> v >> c;
+    // Đọc các cạnh từ dữ liệu có sẵn và lưu vào vector edges
+    for (const auto& [u, v, c] : inputEdges) {
         edges.push_back(Edge(u, v, c));
     }
 

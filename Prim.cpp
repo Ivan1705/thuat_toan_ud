@@ -48,13 +48,21 @@ void prim(int s) { // Thuật toán Prim bắt đầu chạy từ đỉnh nguồ
 }
 
 int main() {
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    // Số đỉnh và số cạnh
+    n = 4;
+    m = 5;
 
-    cin >> n >> m;
+    // Dữ liệu các cạnh
+    vector<tuple<int, int, int>> inputEdges = {
+        {1, 2, 1},
+        {1, 3, 3},
+        {1, 4, 4},
+        {2, 3, 2},
+        {3, 4, 5}
+    };
 
-    for (int i = 1; i <= m; i++) {
-        int u, v, c;
-        cin >> u >> v >> c;
+    // Đọc các cạnh từ dữ liệu có sẵn và lưu vào vector g
+    for (const auto& [u, v, c] : inputEdges) {
         g[u].push_back({v, c});
         g[v].push_back({u, c});
     }
@@ -62,7 +70,7 @@ int main() {
     prim(1);
 
     cout << "Cac canh cua Cay bao trum nho nhat:\n";
-    for (int v = 2; v <= n; v++) { // bắt đầu từ 2 vì 1 là đỉnh gốc
+    for (int v = 2; v <= n; v++) { // Bắt đầu từ 2 vì 1 là đỉnh gốc
         if (parent[v] != -1) {
             cout << parent[v] << " - " << v << " : ";
             for (auto &edge : g[v]) {

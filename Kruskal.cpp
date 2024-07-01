@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>  
+#include <vector>    
+#include <tuple>     
+#include <algorithm> 
+#include <numeric>   
 using namespace std;
 
 // Cấu trúc để lưu các cạnh đồ thị

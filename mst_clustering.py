@@ -140,3 +140,21 @@ class MSTClustering(BaseEstimator, ClusterMixin):
         self.labels_ = labels
         self.cluster_graph_ = cluster_graph
         return self
+    
+
+    def get_graph_segments(self, full_graph=False):
+        if not hasattr(self, 'X_fit_'):
+            raise ValueError("Must call fit() before get_graph_segments()")
+        if self.metric == 'precomputed':
+            raise ValueError("Cannot use ``get_graph_segments`` "
+                             "with precomputed metric.")
+
+        n_samples, n_features = self.X_fit_.shape
+
+        if full_graph:
+            G = sparse.coo_matrix(self.full_tree_)
+        else:
+            G = sparse.coo_matrix(self.cluster_graph_)
+
+        return tuple(np.vstack(arrs) for arrs in zip(self.X_fit_[G.row].T,
+                                                     self.X_fit_[G.col].T))

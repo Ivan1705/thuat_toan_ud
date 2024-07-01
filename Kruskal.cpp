@@ -3,16 +3,17 @@ using namespace std;
 
 // Cấu trúc để lưu các cạnh đồ thị
 struct Edge {
-    int u, v, c;
-    Edge(int _u, int _v, int _c): u(_u), v(_v), c(_c) {};
+    int u, v, c; //biến u, v lưu đỉnh đầu và đỉnh cuối của cạnh, c lưu trọng số của cạnh
+    Edge(int _u, int _v, int _c): u(_u), v(_v), c(_c) {}; //constructor
 };
 
+// Disjoint Set
 struct Dsu {
     vector<int> par;
 
     void init(int n) {
         par.resize(n + 1);
-        iota(par.begin(), par.end(), 0); // Khởi tạo par[i] = i
+        iota(par.begin(), par.end(), 0); // Khởi tạo par[i] = i(khởi tọa mỗi phần tử là cha của chính nó)
     }
 
     int find(int u) {
@@ -36,15 +37,19 @@ vector<Edge> edges;
 
 int main() {
     // Số đỉnh và số cạnh
-    n = 4;
-    m = 4;
+    n = 6;
+    m = 8;
 
     // Dữ liệu các cạnh
     vector<tuple<int, int, int>> inputEdges = {
+        {0, 1, 5},
+        {0, 2, 6},
         {1, 2, 1},
+        {1, 3, 3},
+        {1, 4, 1},
         {2, 3, 2},
-        {3, 4, 3},
-        {4, 1, 4}
+        {3, 4, 7},
+        {4, 5, 2}
     };
 
     // Đọc các cạnh từ dữ liệu có sẵn và lưu vào vector edges
